@@ -1,4 +1,4 @@
-FROM jlphillips/csci4850
+FROM jlphillips/csci3130
 
 LABEL maintainer="Jessica Wijaya"
 
