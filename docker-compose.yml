@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  nfs-server:
+    build: nfs-server
+    image: nfs-server
+    container_name: nfs-server
+    volumes:
+      - nfs-vol:/mnt/volumes
+    ports:
+      - "8888:8888"
+    privileged: true
+    environment:
+      GRANT_SUDO: "yes"
+    restart: on-failure
+
+  nfs-client:
+    build: nfs-client
+    image: nfs-client
+    container_name: nfs-client
+    privileged: true
+    environment:
+      GRANT_SUDO: "yes"
+    restart: on-failure
+volumes:
+  nfs-vol:
+    external: true
+    name: nfs-vol
+
+
